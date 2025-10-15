@@ -20,6 +20,15 @@ function addProduct() {
     productList.push(product);
     console.log(productList);
     
+    clearInputsValue();
+}
+
+//3amlna clear inputs value 3asahn awel madoos 3ala button y3ml clear ly hagat ely 3andy 3asahan y7asn user friendly
+function clearInputsValue() {
+    productName.value = "";
+    productPrice.value = "";
+    productCategory.value = "";
+    productDescription.value = "";
 }
 
 
