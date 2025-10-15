@@ -21,6 +21,8 @@ function addProduct() {
     console.log(productList);
     
     clearInputsValue();
+
+    displayProduct();
 }
 
 //3amlna clear inputs value 3asahn awel madoos 3ala button y3ml clear ly hagat ely 3andy 3asahan y7asn user friendly
@@ -29,6 +31,35 @@ function clearInputsValue() {
     productPrice.value = "";
     productCategory.value = "";
     productDescription.value = "";
+}
+
+function displayProduct() {
+    var cartona = "";
+    for (var i = 0; i < productList.length; i++){
+        cartona +=`                            <div class="col-md-4">
+                                        <div class="card position-relative">
+                                            <img src="image/iphone-17.webp" class="card-img-top" alt="iphone17">
+                                            <div class="card-body">
+                                                <span class="badge text-bg-primary p-2 position-absolute top-0 end-0 m-2 fs-6">${productList[i].category}</span>
+                                                <h3 class="card-title">${productList[i].name}</h3>
+                                                <p class="card-text">${productList[i].description}
+                                                </p>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h3 class="text-primary">${productList[i].price}EGP</h3>
+                                                    <div class="d-flex">
+                                                        <button id="deleteProduct" class="btn btn-outline-danger rounded-end-0">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                        <button id="updateProduct" class="btn btn-outline-warning rounded-start-0">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>`
+    }
+    document.getElementById("rowData").innerHTML = cartona;
 }
 
 
