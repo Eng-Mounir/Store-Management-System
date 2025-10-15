@@ -6,6 +6,13 @@ var productDescription = document.getElementById("productDescription");
 //ha3ml productList 3ashan lw 3amlt save aktr mn product may3mloosh override 3ala b3d f asagylo f array ykoon 3andy 
 var productList = []; //dh nafs ely bygyly mn backend array of objectsss
 
+
+if (localStorage.getItem("productsArray") != null) {
+    var productList = JSON.parse(localStorage.getItem("productsArray"));
+    displayProduct();
+}
+
+
 //3amlt function dy 3ashan a cal it or fire it lama (onclick)byta3 button el html
 function addProduct() {
     //3amlt object 3ashan a group related varaibles dool gowah fy memory w a3raf a call them aw acess on them anytime
@@ -20,6 +27,9 @@ function addProduct() {
     productList.push(product);
     console.log(productList);
     
+    //ba7wel el array ely a5dtoo string awel 3ashan a save it k string fy local storage
+    localStorage.setItem("productsArray", JSON.stringify(productList));
+
     clearInputsValue();
 
     displayProduct();
@@ -35,7 +45,7 @@ function clearInputsValue() {
 
 function displayProduct() {
     var cartona = "";
-    for (var i = 0; i < productList.length; i++){
+    for (var i = 0; i < productList.length; i++){   
         cartona +=`                            <div class="col-md-4">
                                         <div class="card position-relative">
                                             <img src="image/iphone-17.webp" class="card-img-top" alt="iphone17">
