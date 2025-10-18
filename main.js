@@ -2,6 +2,7 @@ var productName = document.getElementById("productName");
 var productPrice = document.getElementById("productPrice");
 var productCategory = document.getElementById("productCategory");
 var productDescription = document.getElementById("productDescription");
+var productImage = document.getElementById("productImage");
 var productSearch = document.getElementById("productSearch");
 
 //ha3ml productList 3ashan lw 3amlt save aktr mn product may3mloosh override 3ala b3d f asagylo f array ykoon 3andy 
@@ -21,7 +22,11 @@ function addProduct() {
         name:productName.value,
         price:productPrice.value,
         category:productCategory.value,
-        description:productDescription.value
+        description: productDescription.value,
+        Image: productImage.files.length > 0
+       ? URL.createObjectURL(productImage.files[0]) 
+       : "../image/default.jpg"
+
     }
 
     //ha3ml push fy array byta3y 3asahn y save products fyh
@@ -50,7 +55,7 @@ function displayProduct(array = productList) {
         cartona += `
         <div class="col-md-4">
             <div class="card position-relative">
-                <img src="image/iphone-17.webp" class="card-img-top" alt="iphone17">
+                <img src="${array[i].Image}" class="card-img-top" alt="iphone17">
                 <div class="card-body">
                     <span class="badge text-bg-primary p-2 position-absolute top-0 end-0 m-2 fs-6">${array[i].category}</span>
                     <h3 class="card-title">${array[i].name}</h3>
