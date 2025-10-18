@@ -2,6 +2,7 @@ var productName = document.getElementById("productName");
 var productPrice = document.getElementById("productPrice");
 var productCategory = document.getElementById("productCategory");
 var productDescription = document.getElementById("productDescription");
+var productSearch = document.getElementById("productSearch");
 
 //ha3ml productList 3ashan lw 3amlt save aktr mn product may3mloosh override 3ala b3d f asagylo f array ykoon 3andy 
 var productList = []; //dh nafs ely bygyly mn backend array of objectsss
@@ -43,34 +44,35 @@ function clearInputsValue() {
     productDescription.value = "";
 }
 
-function displayProduct() {
+function displayProduct(array = productList) {
     var cartona = "";
-    for (var i = 0; i < productList.length; i++){   
-        cartona +=`                            <div class="col-md-4">
-                                        <div class="card position-relative">
-                                            <img src="image/iphone-17.webp" class="card-img-top" alt="iphone17">
-                                            <div class="card-body">
-                                                <span class="badge text-bg-primary p-2 position-absolute top-0 end-0 m-2 fs-6">${productList[i].category}</span>
-                                                <h3 class="card-title">${productList[i].name}</h3>
-                                                <p class="card-text">${productList[i].description}
-                                                </p>
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <h3 class="text-primary">${productList[i].price}EGP</h3>
-                                                    <div class="d-flex">
-                                                        <button onclick="deleteProduct(${i})" id="deleteProduct" class="btn btn-outline-danger rounded-end-0">
-                                                            <i class="fas fa-trash"></i>
-                                                        </button>
-                                                        <button id="updateProduct" class="btn btn-outline-warning rounded-start-0">
-                                                            <i class="fas fa-edit"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>`
+    for (var i = 0; i < array.length; i++) {   
+        cartona += `
+        <div class="col-md-4">
+            <div class="card position-relative">
+                <img src="image/iphone-17.webp" class="card-img-top" alt="iphone17">
+                <div class="card-body">
+                    <span class="badge text-bg-primary p-2 position-absolute top-0 end-0 m-2 fs-6">${array[i].category}</span>
+                    <h3 class="card-title">${array[i].name}</h3>
+                    <p class="card-text">${array[i].description}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3 class="text-primary">${array[i].price} EGP</h3>
+                        <div class="d-flex">
+                            <button onclick="deleteProduct(${i})" class="btn btn-outline-danger rounded-end-0">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <button class="btn btn-outline-warning rounded-start-0">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
     }
     document.getElementById("rowData").innerHTML = cartona;
 }
+
 
 
 //function byta3t el delete (hatysta2bl el i ely gylha mn line 60 el i byta3t el product nafso ely hamsahoo w hatsamyh index)
@@ -80,3 +82,15 @@ function deleteProduct(index) {
      localStorage.setItem("productsArray", JSON.stringify(productList));    //3ashan lama ymsa7 el product yshylo kaman mn localstorage (3ashan lama agy a3ml refresh mayzahrlyysh tani)
 }
 
+
+
+function SearchForProductFunc() {
+    console.log(productSearch.value);
+    var searchArray = []; //array dh ha5azn fyh el products el gedyda ely b search 3alyha
+    for (var i = 0; i<productList.length; i++){
+        if (productList[i].name.toLowerCase().includes(productSearch.value.trim().toLowerCase())) {
+            searchArray.push(productList[i]);
+        }
+    }
+    displayProduct(searchArray);
+}
