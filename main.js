@@ -57,7 +57,7 @@ function displayProduct() {
                                                 <div class="d-flex justify-content-between align-items-center">
                                                     <h3 class="text-primary">${productList[i].price}EGP</h3>
                                                     <div class="d-flex">
-                                                        <button id="deleteProduct" class="btn btn-outline-danger rounded-end-0">
+                                                        <button onclick="deleteProduct(${i})" id="deleteProduct" class="btn btn-outline-danger rounded-end-0">
                                                             <i class="fas fa-trash"></i>
                                                         </button>
                                                         <button id="updateProduct" class="btn btn-outline-warning rounded-start-0">
@@ -72,4 +72,11 @@ function displayProduct() {
     document.getElementById("rowData").innerHTML = cartona;
 }
 
+
+//function byta3t el delete (hatysta2bl el i ely gylha mn line 60 el i byta3t el product nafso ely hamsahoo w hatsamyh index)
+function deleteProduct(index) {
+     productList.splice(index, 1);    //lw dh 3amlto mn 8yyr line byta3 79 ely howa dsplay prodcut haymsa7 f3lm el product byta3y bs mn 8yyr maymsa7o mn display byta3na
+    displayProduct(productList);
+     localStorage.setItem("productsArray", JSON.stringify(productList));    //3ashan lama ymsa7 el product yshylo kaman mn localstorage (3ashan lama agy a3ml refresh mayzahrlyysh tani)
+}
 
