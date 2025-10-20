@@ -5,6 +5,9 @@ var productDescription = document.getElementById("productDescription");
 var productImage = document.getElementById("productImage");
 var productSearch = document.getElementById("productSearch");
 
+var editBtn = document.getElementById("editBtn");
+var addBtn = document.getElementById("addBtn");
+
 //ha3ml productList 3ashan lw 3amlt save aktr mn product may3mloosh override 3ala b3d f asagylo f array ykoon 3andy 
 var productList = []; //dh nafs ely bygyly mn backend array of objectsss
 
@@ -24,6 +27,7 @@ function addProduct() {
         category:productCategory.value,
         description: productDescription.value,
         //lazm .files 3ashan y acess 3ala file mn gowa el os 3andk ya5ood mno el image
+        //**note** hena URL.createObjectURL 3aml url 3ashan ykoon refrence ly image ely hay7otha fy local machine byta3k msh hay3raf y3mlo save 3ala locaclstorage laa ha acess 3alyh mn loacl machine mn url lw 3awz tysta5dmo mn localc storage (base64)
         Image: productImage.files.length > 0
        ? URL.createObjectURL(productImage.files[0]) 
        : "../image/default.jpg"
@@ -110,5 +114,9 @@ function getProductUpdate(index) {
   productName.value = productList[index].name;
   productPrice.value = productList[index].price;
   productCategory.value = productList[index].category;
-  productDescription.value = productList[index].description;
+    productDescription.value = productList[index].description;
+
+    //hena ba2olo fy card byta3t el product awel maydoos 3ala zorar edit haycall function getProductUpdate w hy remove button byta3 add product mn form w y7oot makano update button
+    addBtn.classList.add("d-none");
+    editBtn.classList.remove("d-none");
 }
