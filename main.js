@@ -57,7 +57,8 @@ function clearInputsValue() {
 
 function displayProduct(array = productList) {
     var cartona = "";
-    for (var i = 0; i < array.length; i++) {   
+    for (var i = 0; i < array.length; i++) { 
+        var realIndex = productList.indexOf(array[i]);
         cartona += `
         <div class="col-md-4">
             <div class="card position-relative">
@@ -69,10 +70,10 @@ function displayProduct(array = productList) {
                     <div class="d-flex justify-content-between align-items-center">
                         <h3 class="text-primary">${array[i].price} EGP</h3>
                         <div class="d-flex">
-                            <button onclick="deleteProduct(${i})" class="btn btn-outline-danger rounded-end-0">
+                            <button onclick="deleteProduct(${realIndex})" class="btn btn-outline-danger rounded-end-0">
                                 <i class="fas fa-trash"></i>
                             </button>
-                            <button onclick="getProductUpdate(${i})" class="btn btn-outline-warning rounded-start-0">
+                            <button onclick="getProductUpdate(${realIndex})" class="btn btn-outline-warning rounded-start-0">
                                 <i class="fas fa-edit"></i>
                             </button>
                         </div>
