@@ -23,6 +23,7 @@ function addProduct() {
         price:productPrice.value,
         category:productCategory.value,
         description: productDescription.value,
+        //lazm .files 3ashan y acess 3ala file mn gowa el os 3andk ya5ood mno el image
         Image: productImage.files.length > 0
        ? URL.createObjectURL(productImage.files[0]) 
        : "../image/default.jpg"
@@ -47,6 +48,7 @@ function clearInputsValue() {
     productPrice.value = "";
     productCategory.value = "";
     productDescription.value = "";
+    productImage.value = "";
 }
 
 function displayProduct(array = productList) {
@@ -66,7 +68,7 @@ function displayProduct(array = productList) {
                             <button onclick="deleteProduct(${i})" class="btn btn-outline-danger rounded-end-0">
                                 <i class="fas fa-trash"></i>
                             </button>
-                            <button class="btn btn-outline-warning rounded-start-0">
+                            <button onclick="getProductUpdate(${i})" class="btn btn-outline-warning rounded-start-0">
                                 <i class="fas fa-edit"></i>
                             </button>
                         </div>
@@ -82,9 +84,9 @@ function displayProduct(array = productList) {
 
 //function byta3t el delete (hatysta2bl el i ely gylha mn line 60 el i byta3t el product nafso ely hamsahoo w hatsamyh index)
 function deleteProduct(index) {
-     productList.splice(index, 1);    //lw dh 3amlto mn 8yyr line byta3 79 ely howa dsplay prodcut haymsa7 f3lm el product byta3y bs mn 8yyr maymsa7o mn display byta3na
+    productList.splice(index, 1);    //lw dh 3amlto mn 8yyr line byta3 67 ely howa display prodcut haymsa7 f3lm el product byta3y bs mn 8yyr maymsa7o mn display byta3na
     displayProduct(productList);
-     localStorage.setItem("productsArray", JSON.stringify(productList));    //3ashan lama ymsa7 el product yshylo kaman mn localstorage (3ashan lama agy a3ml refresh mayzahrlyysh tani)
+    localStorage.setItem("productsArray", JSON.stringify(productList));    //3ashan lama ymsa7 el product yshylo kaman mn localstorage (3ashan lama agy a3ml refresh mayzahrlyysh tani)
 }
 
 
@@ -98,4 +100,15 @@ function SearchForProductFunc() {
         }
     }
     displayProduct(searchArray);
+}
+
+
+
+function getProductUpdate(index) {
+    // Fill the input fields with the existing product data
+    //mn a5er ba3ml Set el value ely mawgooda foo2 bel mawgooda fy product list bel index ely e5tarto lama dost 3la el edit
+  productName.value = productList[index].name;
+  productPrice.value = productList[index].price;
+  productCategory.value = productList[index].category;
+  productDescription.value = productList[index].description;
 }
