@@ -106,8 +106,8 @@ function SearchForProductFunc() {
     displayProduct(searchArray);
 }
 
-
-
+//3ashan tykoon bridge mabyyn el getProductUpdate w updateProduct
+var updatedIndex;
 function getProductUpdate(index) {
     // Fill the input fields with the existing product data
     //mn a5er ba3ml Set el value ely mawgooda foo2 bel mawgooda fy product list bel index ely e5tarto lama dost 3la el edit
@@ -119,4 +119,18 @@ function getProductUpdate(index) {
     //hena ba2olo fy card byta3t el product awel maydoos 3ala zorar edit haycall function getProductUpdate w hy remove button byta3 add product mn form w y7oot makano update button
     addBtn.classList.add("d-none");
     editBtn.classList.remove("d-none");
+    updatedIndex = index; //hena 3ashan y pass index ely fy parameter getProductUpdate w y3mlo zy bridge kda ywadyh ly updateProduct function
+}
+
+
+function updateProduct() {
+    productList[updatedIndex].name = productName.value;
+    productList[updatedIndex].price = productPrice.value;
+    productList[updatedIndex].category = productCategory.value;
+    productList[updatedIndex].description = productDescription.value;
+    displayProduct(productList);
+    localStorage.setItem("productsArray", JSON.stringify(productList));
+    clearInputsValue();
+    addBtn.classList.remove("d-none");
+    editBtn.classList.add("d-none");
 }
