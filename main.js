@@ -57,6 +57,9 @@ function clearInputsValue() {
     productCategory.value = "";
     productDescription.value = "";
     productImage.value = "";
+    productName.classList.remove("is-valid");
+    productPrice.classList.remove("is-valid");
+    productCategory.classList.remove("is-valid");
 }
 
 function displayProduct(array = productList) {
