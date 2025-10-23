@@ -6,3 +6,18 @@ border: none;
 .form-control:focus {
 box-shadow:none;
 }
+
+.form-control.is-valid:focus,
+.was-validated .form-control:valid:focus {
+    box-shadow:0px 3px green;
+    outline: none;
+    border-color: transparent;
+}
+
+
+.form-control.is-invalid:focus,
+.was-validated .form-control:invalid:focus {
+    box-shadow:0px 3px red;
+    outline: none;
+        border-color: transparent;
+}

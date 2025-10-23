@@ -20,7 +20,8 @@ if (localStorage.getItem("productsArray") != null) {
 
 //3amlt function dy 3ashan a cal it or fire it lama (onclick)byta3 button el html
 function addProduct() {
-    //3amlt object 3ashan a group related varaibles dool gowah fy memory w a3raf a call them aw acess on them anytime
+    if (validateName() && validatePrice()) {
+            //3amlt object 3ashan a group related varaibles dool gowah fy memory w a3raf a call them aw acess on them anytime
     var product = {
         name:productName.value,
         price:productPrice.value,
@@ -41,9 +42,12 @@ function addProduct() {
     //ba7wel el array ely a5dtoo string awel 3ashan a save it k string fy local storage
     localStorage.setItem("productsArray", JSON.stringify(productList));
 
+    validateName();
+    
     clearInputsValue();
 
     displayProduct();
+    }
 }
 
 //3amlna clear inputs value 3asahn awel madoos 3ala button y3ml clear ly hagat ely 3andy 3asahan y7asn user friendly
@@ -135,3 +139,56 @@ function updateProduct() {
     addBtn.classList.remove("d-none");
     editBtn.classList.add("d-none");
 }
+
+function validateName() {
+    var regex = /^\w{3,}$/;
+    var alertNameMsg = document.getElementById("alertNameMsg");
+    if (regex.test(productName.value)) {      
+        productName.classList.add("is-valid");
+        productName.classList.remove("is-invalid");
+        alertNameMsg.classList.add("d-none");
+        return true;
+    }
+    else {
+        productName.classList.remove("is-valid");
+        productName.classList.add("is-invalid");
+        alertNameMsg.classList.remove("d-none");
+        return false;
+    }
+}
+
+function validatePrice() {
+    var regex = /^\d{3,}$/;
+    var alertPriceMsg = document.getElementById("alertPriceMsg");
+    if (regex.test(productPrice.value)) {      
+        productPrice.classList.add("is-valid");
+        productPrice.classList.remove("is-invalid");
+        alertPriceMsg.classList.add("d-none");
+        return true;
+    }
+    else {
+        productPrice.classList.remove("is-valid");
+        productPrice.classList.add("is-invalid");
+        alertPriceMsg.classList.remove("d-none");
+        return false;
+    }
+}
+
+
+function validateCategory() {
+    var regex = /^(Mobile|TV|Laptop)$/i;
+    var alertPriceMsg = document.getElementById("alertPriceMsg");
+    if (regex.test(productPrice.value)) {      
+        productPrice.classList.add("is-valid");
+        productPrice.classList.remove("is-invalid");
+        alertPriceMsg.classList.add("d-none");
+        return true;
+    }
+    else {
+        productPrice.classList.remove("is-valid");
+        productPrice.classList.add("is-invalid");
+        alertPriceMsg.classList.remove("d-none");
+        return false;
+    }
+}
+

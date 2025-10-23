@@ -36,22 +36,24 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 ">
-                                    <input type="text"
+                                    <input type="text" oninput="validateName()"
                                         class="form-control py-4 pt-5 border-bottom border-3 border-primary"
                                         id="productName" placeholder="productName">
                                     <label for="productName">
                                         <i class=" fas fa-tag me-2"></i>
                                         Product Name</label>
+                                        <p class="alert alert-danger d-none" id="alertNameMsg">Invalid Patter</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 ">
-                                    <input type="number"
+                                    <input type="number" oninput="validatePrice()"
                                         class="form-control py-4 pt-5 border-bottom border-3 border-primary"
                                         id="productPrice" placeholder="productPrice">
                                     <label for="productPrice">
                                         <i class=" fas fa-dollar-sign me-2"></i>
                                         Product Price</label>
+                                        <p class="alert alert-danger d-none" id="alertPriceMsg">Invalid Price</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
