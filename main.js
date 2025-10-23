@@ -20,7 +20,7 @@ if (localStorage.getItem("productsArray") != null) {
 
 //3amlt function dy 3ashan a cal it or fire it lama (onclick)byta3 button el html
 function addProduct() {
-    if (validateName() && validatePrice()) {
+    if (validateName() && validatePrice() && validateCategory()) {
             //3amlt object 3ashan a group related varaibles dool gowah fy memory w a3raf a call them aw acess on them anytime
     var product = {
         name:productName.value,
@@ -177,17 +177,17 @@ function validatePrice() {
 
 function validateCategory() {
     var regex = /^(Mobile|TV|Laptop)$/i;
-    var alertPriceMsg = document.getElementById("alertPriceMsg");
-    if (regex.test(productPrice.value)) {      
-        productPrice.classList.add("is-valid");
-        productPrice.classList.remove("is-invalid");
-        alertPriceMsg.classList.add("d-none");
+    var alertCategoryMsg = document.getElementById("alertCategoryMsg");
+    if (regex.test(productCategory.value)) {      
+        productCategory.classList.add("is-valid");
+        productCategory.classList.remove("is-invalid");
+        alertCategoryMsg.classList.add("d-none");
         return true;
     }
     else {
-        productPrice.classList.remove("is-valid");
-        productPrice.classList.add("is-invalid");
-        alertPriceMsg.classList.remove("d-none");
+        productCategory.classList.remove("is-valid");
+        productCategory.classList.add("is-invalid");
+        alertCategoryMsg.classList.remove("d-none");
         return false;
     }
 }

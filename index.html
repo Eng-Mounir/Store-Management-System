@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 ">
-                                    <input list="productCategoryList"
+                                    <input list="productCategoryList"  oninput="validateCategory()"
                                         class="form-control py-4 pt-5 border-bottom border-3 border-primary"
                                         id="productCategory" placeholder="productCategory">
                                     <datalist id="productCategoryList">
@@ -69,6 +69,7 @@
                                     <label for="productCategory">
                                         <i class="fa-solid fa-grip me-2"></i>
                                         Product Category</label>
+                                        <p class="alert alert-danger d-none" id="alertCategoryMsg">Invalid Category</p>
                                 </div>
                             </div>
                             <div class="col-md-6">
